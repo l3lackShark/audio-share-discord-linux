@@ -19,7 +19,7 @@ func main() {
 	}
 
 	if !pactl.CheckForPulseaudio() {
-		panic("Pulseaudio is not installed")
+		panic("pulseaudio is not running!")
 	}
 
 	setupCloseHandler()
