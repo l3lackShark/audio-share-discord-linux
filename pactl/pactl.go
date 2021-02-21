@@ -7,7 +7,7 @@ import (
 	"github.com/l3lackShark/audio-share-discord-linux/shell"
 )
 
-//Checks for pulseaudio
+//CheckForPulseaudio makes sure that PA is running on the host
 func CheckForPulseaudio() bool {
 	raw := string(shell.Cmd("pgrep pulseaudio", true))
 	if raw != "" {
