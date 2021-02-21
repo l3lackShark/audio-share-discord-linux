@@ -49,9 +49,8 @@ func CreateVirualCables() []string {
 }
 
 //UnloadCables removes the virtual cables from pa
-func UnloadCables(input []string) error {
-	fmt.Println("Exiting gracefully...")
-	for _, id := range input {
+func UnloadCables(input *[]string) error {
+	for _, id := range *input {
 		raw := string(shell.Cmd(fmt.Sprintf("pactl unload-module %s", id), true))
 		if raw != "" {
 			return fmt.Errorf("ERROR: %s", raw)
