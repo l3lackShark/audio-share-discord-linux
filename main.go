@@ -17,6 +17,11 @@ func main() {
 	if runtime.GOOS != "linux" {
 		panic("OS IS NOT SUPPORTED")
 	}
+
+	if !pactl.CheckForPulseaudio() {
+		panic("pulseaudio is not running!")
+	}
+
 	setupCloseHandler()
 	defer pactl.UnloadCables(&ids)
 	rawSinks := pactl.GetSinks()

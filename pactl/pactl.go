@@ -7,6 +7,15 @@ import (
 	"github.com/l3lackShark/audio-share-discord-linux/shell"
 )
 
+//CheckForPulseaudio makes sure that PA is running on the host
+func CheckForPulseaudio() bool {
+	raw := string(shell.Cmd("pgrep pulseaudio", true))
+	if raw != "" {
+		return true
+	}
+	return false
+}
+
 //GetSinks returns list of available alsa sinks
 func GetSinks() []string {
 	raw := string(shell.Cmd("pactl list sinks | grep -A 1 Name", true))
