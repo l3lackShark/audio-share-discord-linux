@@ -57,7 +57,9 @@ func main() {
 	defer pactl.UnloadCables(ids)
 
 	var x string
-	fmt.Println(`Your main mic is now muted and is set to 100% volume! (EARRAPE WARNING), change input device in Discord to "<...>VirtMic<...>" and unmute your main mic and set appropriate sound level (pavucontrol/pulsemixer). Then move any programs that you want audio streaming ON to "FunnelSink" and change the volume of "OutputMixer" according to your friend's liking`)
+	fmt.Println()
+	fmt.Println(`Your main mic is now muted and is set to 100% volume! (EARRAPE WARNING), change input device in Discord to "<...>VirtMic<...>" and unmute your main mic and set appropriate sound level (pavucontrol/pulsemixer). Then move any programs that you want audio streaming ON to "FunnelSink" and change the volume of "OutputMixer" according to your friend's liking. You should also disable automatic input sensitivity and set input sensitivity to lowest value in discord settings.`)
+	fmt.Println()
 	fmt.Println("ENTER to quit (Do not Ctrl + C)")
 	_, _ = fmt.Scanln(&x)
 
