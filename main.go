@@ -67,9 +67,7 @@ func main() {
 	pactl.GetMicVolume(parsedAlsaSource)
 	ids = append(ids, pactl.LoadVirtualMic(parsedAlsaSource)...)
 
-	fmt.Println()
-	fmt.Println(`Your main mic is now muted and is set to 100% volume! (EARRAPE WARNING), change input device in Discord to "<...>VirtMic<...>", unmute your main mic and set it's appropriate sound level (pavucontrol/pulsemixer). Then move any programs that you want audio streaming ON to "FunnelSink" and change the volume of "OutputMixer" according to your friend's liking. You should also disable automatic input sensitivity and set it's value to the lowest possible in the Discord settings.`)
-	fmt.Println()
+	fmt.Printf(`\nYour main mic is now muted and is set to 100% volume! (EARRAPE WARNING), change input device in Discord to "<...>VirtMic<...>", unmute your main mic and set it's appropriate sound level (pavucontrol/pulsemixer). Then move any programs that you want audio streaming ON to "FunnelSink" and change the volume of "OutputMixer" according to your friend's liking. You should also disable automatic input sensitivity and set it's value to the lowest possible in the Discord settings.\n`)
 	fmt.Println("Press ENTER or Ctrl + C to quit")
 	var x string
 	_, _ = fmt.Scanln(&x)
