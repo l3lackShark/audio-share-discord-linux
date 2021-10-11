@@ -34,19 +34,20 @@ func main() {
 		i++
 	}
 	fmt.Printf("Select your output device [%d-%d]: ", 1, len(rawSinks))
-	color.Set(color.White)
 	var answer int
+	color.Set(color.White)
 	_, err := fmt.Scanln(&answer)
-	for err != nil || answer > len(rawSinks) || answer < 1 {
-		fmt.Println("Select your output device!")
-		_, err = fmt.Scanln(&answer)
-	}
 	color.Reset()
+	for err != nil || answer > len(rawSinks) || answer < 1 {
+		fmt.Printf("Select your output device [%d-%d]: ", 1, len(rawSinks))
+		color.Set(color.White)
+		_, err = fmt.Scanln(&answer)
+		color.Reset()
+	}
 	spl := strings.Split(rawSinks[answer-1], "Name: ")
 	spl = strings.Split(spl[1], "\n")
 
 	parsedAlsaSink := spl[0]
-	fmt.Println("Parsed alsa sink:", parsedAlsaSink)
 	ids = pactl.CreateVirualCables()
 	ids = append(ids, pactl.LoadListenCalbe(parsedAlsaSink))
 
@@ -58,14 +59,16 @@ func main() {
 		i++
 	}
 	fmt.Printf("Select your input device [%d-%d]: ", 1, len(rawSources))
-	color.Set(color.White)
 	var answerI int
+	color.Set(color.White)
 	_, err = fmt.Scanln(&answerI)
-	for err != nil || answerI > len(rawSources) || answerI < 1 {
-		fmt.Println("Select your input device!")
-		_, err = fmt.Scanln(&answerI)
-	}
 	color.Reset()
+	for err != nil || answerI > len(rawSources) || answerI < 1 {
+		fmt.Printf("Select your input device [%d-%d]: ", 1, len(rawSources))
+		color.Set(color.White)
+		_, err = fmt.Scanln(&answerI)
+		color.Reset()
+	}
 	spl = strings.Split(rawSources[answerI-1], "Name: ")
 	spl = strings.Split(spl[1], "\n")
 
@@ -78,8 +81,10 @@ Your main mic is now muted and is set to 100% volume! (EARRAPE WARNING),
 
   <fg=cyan>1.</> Change input device in Discord to <fg=white;op=bold>Virtual Source VirtMic on Monitor of Do_Not_Touch_Sink</>
   <fg=cyan>2.</> Unmute your main mic and set it's appropriate sound level (pavucontrol/pulsemixer)
-  <fg=cyan>3.</> Move any programs that you want audio streaming ON to <fg=white;op=bold>FunnelSink</> and change the volume of <fg=lightWhite;op=bold>OutputMixer</> according to your friend's liking. 
-  <fg=cyan>4.</> You should also disable automatic input sensitivity and set it's value to the lowest possible in the Discord settings.
+  <fg=cyan>3.</> Move any programs that you want audio streaming ON to <fg=white;op=bold>FunnelSink</>
+     and change the volume of <fg=lightWhite;op=bold>OutputMixer</> according to your friend's liking. 
+  <fg=cyan>4.</> You should also disable automatic input sensitivity and set it's value to the
+     lowest possible in the Discord settings.
 
 Press ENTER or Ctrl + C to quit`)
 	var x string
